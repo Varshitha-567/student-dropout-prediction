@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PRISM - Login</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="navbar">
+    <div class="left-section">
+       <img src="icon-image.jpg" alt="PRISM Logo" class="logo">
+      <h1 class="brand-name">PRISM Login</h1>
+    </div>
+  </header>
+
+  <!-- Login Form -->
+  <section class="login-section">
+    <div class="login-box">
+      <h2>Login</h2>
+      <form>
+        <label for="username">Username</label>
+        <input type="text" id="username" placeholder="Enter username" required>
+
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Enter password" required>
+
+        <label for="role">Role</label>
+        <select id="role" required>
+          <option value="">Select Role</option>
+          <option value="student">Student</option>
+          <option value="mentor">Mentor</option>
+          <option value="hod">HOD / Principal</option>
+        </select>
+
+        <button type="submit" class="login-btn">Login</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 PRISM | Government of Rajasthan | Directorate of Technical Education</p>
+  </footer>
+</body>
+</html>
