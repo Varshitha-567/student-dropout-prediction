@@ -5,13 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PRISM - Login</title>
   <link rel="stylesheet" href="style.css">
+  <script>
+    function handleLogin(event) {
+      event.preventDefault(); // stop form submission
+
+      const role = document.getElementById("role").value;
+
+      if (role === "mentor") {
+        window.location.href = "mentor.html";
+      } else if (role === "hod") {
+        window.location.href = "admin.html";
+      } else {
+        alert("Please select a valid role (Mentor or HOD/Principal).");
+      }
+    }
+  </script>
 </head>
 <body>
   <!-- Header -->
   <header class="navbar">
     <div class="left-section">
-       <img src="icon-image.jpg" alt="PRISM Logo" class="logo">
-      <h1 class="brand-name">PRISM Login</h1>
+      <img src="icon-image.jpg" alt="PRISM Logo" class="logo">
+      <h1 class="brand-name">PRISM </h1>
+    </div>
+    <div class="right-section">
+      <a href="index.html" class="login-btn">Home</a>
     </div>
   </header>
 
@@ -19,7 +37,7 @@
   <section class="login-section">
     <div class="login-box">
       <h2>Login</h2>
-      <form>
+      <form onsubmit="handleLogin(event)">
         <label for="username">Username</label>
         <input type="text" id="username" placeholder="Enter username" required>
 
@@ -29,7 +47,6 @@
         <label for="role">Role</label>
         <select id="role" required>
           <option value="">Select Role</option>
-          <option value="student">Student</option>
           <option value="mentor">Mentor</option>
           <option value="hod">HOD / Principal</option>
         </select>

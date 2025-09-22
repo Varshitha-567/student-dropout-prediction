@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mentor Dashboard - PRISM</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="body">
+  <!-- Header -->
+  <header class="navbar">
+    <div class="left-section">
+      <img src="icon-image.jpg" alt="PRISM Logo" class="logo">
+      <h1 class="brand-name">Mentor Dashboard</h1>
+    </div>
+
+    <div class="right-section">
+      <a href="index.html" class="login-btn">Home</a>
+      <a href="login.html" class="login-btn">Logout</a>
+      
+    </div>
+
+  </header>
+
+  <!-- Filtering/Search Section -->
+  <section class="filter-section">
+    <input type="text" id="searchBox" placeholder="🔍 Search by Student ID or Name">
+
+    <select id="riskFilter">
+      <option value="">All Risk Levels</option>
+      <option value="low">Low Risk</option>
+      <option value="medium">Medium Risk</option>
+      <option value="high">High Risk</option>
+    </select>
+  </section>
+  <section class="quick-stats">
+    <div class="card total">
+      <h2 id="totalStudents">0</h2>
+      <p>Total Students</p>
+    </div>
+    <div class="card high">
+      <h2 id="highRisk">0</h2>
+      <p>High Risk</p>
+    </div>
+    <div class="card medium">
+      <h2 id="mediumRisk">0</h2>
+      <p>Medium Risk</p>
+    </div>
+    <div class="card low">
+      <h2 id="lowRisk">0</h2>
+      <p>Low Risk</p>
+    </div>
+  </section>
+
+  <!-- Student List -->
+  <section class="student-list">
+    <table>
+      <thead>
+        <tr>
+          <th>Student ID</th>
+          <th>Name</th>
+          <th>Risk Status</th>
+        </tr>
+      </thead>
+      <tbody id="studentTableBody">
+        <!-- Backend will inject student rows here -->
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 PRISM | Government of Rajasthan | Directorate of Technical Education</p>
+  </footer>
+
+  <script>
+    // 🔹 Combined Filtering (Search + Risk)
+    function applyFilters() {
+      const searchText = document.getElementById("searchBox").value.toLowerCase();
+      const riskValue = document.getElementById("riskFilter").value;
+
+      const rows = document.querySelectorAll("#studentTableBody tr");
+      rows.forEach(row => {
+        const text = row.innerText.toLowerCase();
+        const riskClass = row.querySelector("td.risk")?.classList[1]; // low, medium, high
+
+        const matchesSearch = text.includes(searchText);
+        const matchesRisk = riskValue === "" || riskClass === riskValue;
+
+        row.style.display = (matchesSearch && matchesRisk) ? "" : "none";
+      });
+    }
+
+    // Event listeners
+    document.getElementById("searchBox").addEventListener("input", applyFilters);
+    document.getElementById("riskFilter").addEventListener("change", applyFilters);
+
+    // 🔹 Row click handler (goes to visualization page)
+    function goToStudentPage(studentId) {
+      window.location.href = "student-visualization.html?id=" + studentId;
+    }
+  </script>
+</body>
+</html>

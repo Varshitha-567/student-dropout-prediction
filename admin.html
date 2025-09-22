@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - PRISM</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="body">
+  <!-- Header -->
+  <header class="navbar">
+    <div class="left-section">
+        <img src="icon-image.jpg" alt="PRISM Logo" class="logo">
+      <h1 class="brand-name">Admin Dashboard</h1>
+    </div>
+        <div class="right-section">
+      <a href="index.html" class="login-btn">Home</a>
+      <a href="login.html" class="login-btn">Logout</a>
+      
+    </div>
+  </header>
+
+  <!-- Filtering Section -->
+  <section class="filter-section">
+    <label for="classFilter">Filter by Class:</label>
+    <select id="classFilter">
+      <option value="all">All Classes</option>
+      <option value="10">Class 10</option>
+      <option value="11">Class 11</option>
+    </select>
+  </section>
+
+  <!-- Quick Stats -->
+  <section class="quick-stats">
+    <div class="card total">
+      <h2 id="totalStudents">0</h2>
+      <p>Total Students</p>
+    </div>
+    <div class="card high">
+      <h2 id="highRisk">0</h2>
+      <p>High Risk</p>
+    </div>
+    <div class="card medium">
+      <h2 id="mediumRisk">0</h2>
+      <p>Medium Risk</p>
+    </div>
+    <div class="card low">
+      <h2 id="lowRisk">0</h2>
+      <p>Low Risk</p>
+    </div>
+  </section>
+
+  <!-- Overall Visualization -->
+  <section class="visualization">
+    <h3>Overall Risk Distribution</h3>
+    <canvas id="riskChart" width="400" height="200"></canvas>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 PRISM | Government of Rajasthan | Directorate of Technical Education</p>
+  </footer>
+
+  <script>
+    let riskChart;
+
+    // 🔹 Update Dashboard – backend will pass counts
+    function updateDashboard(data) {
+      const { total, high, medium, low } = data;
+
+      // Update Quick Stats
+      document.getElementById("totalStudents").innerText = total;
+      document.getElementById("highRisk").innerText = high;
+      document.getElementById("mediumRisk").innerText = medium;
+      document.getElementById("lowRisk").innerText = low;
+
+      // Update Chart
+      if (riskChart) riskChart.destroy();
+      riskChart = new Chart(document.getElementById("riskChart"), {
+        type: "pie",
+        data: {
+          labels: ["High Risk", "Medium Risk", "Low Risk"],
+          datasets: [{
+            data: [high, medium, low],
+            backgroundColor: ["red", "orange", "green"]
+          }]
+        }
+      });
+    }
+
+    // 🔹 Example: Backend should call updateDashboard()
+    // updateDashboard({ total: 120, high: 30, medium: 50, low: 40 });
+
+    // 🔹 Class Filter Handler
+    document.getElementById("classFilter").addEventListener("change", (e) => {
+      const selectedClass = e.target.value;
+      // Backend should fetch filtered data and call updateDashboard()
+      console.log("Selected Class:", selectedClass);
+    });
+  </script>
+</body>
+</html>

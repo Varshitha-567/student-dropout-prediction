@@ -5,6 +5,9 @@
   box-sizing: border-box;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
+.body{
+    background: linear-gradient(to right, #eef2ff, #e0e7ff);
+}
 
 /* Navbar */
 .navbar {
@@ -158,3 +161,128 @@ footer {
 .login-box .login-btn:hover {
   background-color: #0f2564;
 }
+/* Mentor Dashboard */
+.filter-section {
+  margin: 20px;
+  text-align: center;
+}
+.filter-section input {
+  padding: 10px;
+  width: 50%;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+.student-list {
+  margin: 20px;
+}
+.student-list table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.student-list th, .student-list td {
+  padding: 12px;
+  border: 1px solid #ddd;
+  text-align: left;
+  cursor: pointer;
+}
+.student-list tr:hover {
+  background-color: #f5f5f5;
+}
+
+.risk.low { color: green; font-weight: bold; }
+.risk.medium { color: orange; font-weight: bold; }
+.risk.high { color: red; font-weight: bold; }
+.filter-section {
+  margin: 20px;
+  text-align: center;
+}
+.filter-section input,
+.filter-section select {
+  padding: 10px;
+  margin: 5px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+.filter-section select {
+  cursor: pointer;
+}
+/* Quick Stats */
+.quick-stats {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px;
+  flex-wrap: wrap;
+}
+.quick-stats .card {
+  flex: 1;
+  margin: 10px;
+  padding: 20px;
+  text-align: center;
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
+}
+.quick-stats .card h2 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+.quick-stats .card.total { background: #4a90e2; }
+.quick-stats .card.high { background: #e74c3c; }
+.quick-stats .card.medium { background: #f39c12; }
+.quick-stats .card.low { background: #27ae60; }
+
+/* Visualization */
+.visualization {
+  margin: 30px;
+  text-align: center;
+}
+/* Features Section */
+.features {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin: 50px auto;
+  max-width: 900px;
+  flex-wrap: wrap;
+  background: linear-gradient(to right, #eef2ff, #e0e7ff);
+}
+
+.feature-card {
+  flex: 1 1 400px;
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.feature-card h2 {
+  font-size: 22px;
+  margin-bottom: 15px;
+  color: #2c3e50;
+}
+
+.feature-card p {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* Risk Highlights */
+.risk {
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 5px;
+  color: #fff;
+}
+
+
